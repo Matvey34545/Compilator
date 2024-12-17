@@ -1,0 +1,17 @@
+func void function(int a, int b, int c);
+
+int x = 0;
+int y = x + 9;
+void y = x + y;
+void z;
+
+func int foo(int a, int x)
+{
+ if (a == 0)
+{
+	return a;
+}
+
+ int z = 0;
+ return z;
+} 
