@@ -12,6 +12,7 @@ func int foo(int a, int x)
 	return a;
 }
 
+ x = (8 + 4)*3;
  int z = 0;
  return z;
 } 

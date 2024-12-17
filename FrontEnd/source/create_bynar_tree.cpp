@@ -9,6 +9,7 @@ static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node);
 static ErrorFrontEnd declaration_var_parsing(StackForParsing *stack, Node** node, TypeKeyWords type);
 
 static ErrorFrontEnd expression_parsing(StackForParsing *stack, Node** node, int prioritet_operator);
+static ErrorFrontEnd expression_command_parsing(StackForParsing *stack, Node** node, int prioritet);
 
 static ErrorFrontEnd unary_parsing(StackForParsing *stack, Node** node);
 static ErrorFrontEnd const_parsing(StackForParsing *stack, Node** node);
@@ -272,7 +273,7 @@ static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node)
             error = declaration_var_parsing(stack, &(*node)->left, ((Token*)(stack->stack).ptr + stack->counter)->type_key_word);
             if (error != FRONT_ERROR_NO)
                 return error;
-            is_read = true;
+            
             break;
         
         case FUNC_DECLARATOR:
@@ -287,12 +288,31 @@ static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node)
             if (error != FRONT_ERROR_NO)
                 return error;
             is_read = true;
-            break; 
-    }
-    if (is_read)
-        return command_parsing(stack, &(*node)->right);
+            break;
+        
+        case OPERATOR:
+        case VARIABLE:
+        case CONST:
+            error = expression_command_parsing(stack, &(*node)->left, MAX_BYNARY_PRIORITET);
+            if (error != FRONT_ERROR_NO)
+                return error;
+            is_read = true;
+            break;
 
-    return FRONT_ERROR_NO;
+        default:
+            return FRONT_ERROR_NO; 
+    }
+    return command_parsing(stack, &(*node)->right);
+}
+
+static ErrorFrontEnd expression_command_parsing(StackForParsing *stack, Node** node, int prioritet)
+{
+    ErrorFrontEnd error = expression_parsing(stack, node, prioritet);
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != SEP_LINE)
+        return FRONT_EXPECTED_SEP_LINE;
+
+    (stack->counter)++;
+    return FRONT_ERROR_NO; 
 }
 
 static ErrorFrontEnd check_type_and_create_node(StackForParsing *stack, Node** node, TypeKeyWords type)
