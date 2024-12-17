@@ -20,7 +20,7 @@ int main()
     BynarTree tree             = {};
     create_bynar_tree(&tree, sizeof(Token));
 
-    printf("ERROR: %d\n", command_parsing(&main_stack, &tree.root));
+    printf("ERROR: %d\n", main_parsing(&main_stack, &tree));
 
     dump(&tree, NULL, NULL);
 }

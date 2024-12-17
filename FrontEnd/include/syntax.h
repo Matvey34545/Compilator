@@ -81,7 +81,6 @@ struct Token
 {
     TypeKeyWords type_key_word;
     KeyWords number_key_words;
-    int prioritet_declarator;
     union 
     {
         Operator_t operator_t;
@@ -101,42 +100,42 @@ struct InfoToken
 };      
 
 
-const InfoToken info_words[] =    {{"if",        sizeof("if")       - 1, true,  true,  {CD_OPERATOR,     IF,             0                        }},
-                                   {"else",      sizeof("else")     - 1, true,  true,  {CD_OPERATOR,     ELSE,           0                        }},
-                                   {"while",     sizeof("while")    - 1, true,  true,  {CD_OPERATOR,     WHILE,          0                        }},
+const InfoToken info_words[] =    {{"if",        sizeof("if")       - 1, true,  true,  {CD_OPERATOR,     IF,                                     }},
+                                   {"else",      sizeof("else")     - 1, true,  true,  {CD_OPERATOR,     ELSE,                                   }},
+                                   {"while",     sizeof("while")    - 1, true,  true,  {CD_OPERATOR,     WHILE,                                  }},
 
-                                   {"return",    sizeof("return")   - 1, true,  true,  {END_FUNC,        RETURN,         0                        }}, 
+                                   {"return",    sizeof("return")   - 1, true,  true,  {END_FUNC,        RETURN,                                 }}, 
 
-                                   {"int",       sizeof("int")      - 1, true,  true,  {DECLARATOR,      INT,            1                        }},
-                                   {"void",      sizeof("void")     - 1, true,  true,  {DECLARATOR,      VOID,           1                        }},
-                                   {"const",     sizeof("const")    - 1, true,  true,  {DECLARATOR,      CONST_VAR,      2                        }},
+                                   {"int",       sizeof("int")      - 1, true,  true,  {DECLARATOR,      INT,                                    }},
+                                   {"void",      sizeof("void")     - 1, true,  true,  {DECLARATOR,      VOID,                                   }},
+                                   {"const",     sizeof("const")    - 1, true,  true,  {DECLARATOR,      CONST_VAR,                              }},
 
-                                   {"main",      sizeof("main")     - 1, true,  false, {FUNC,            MAIN,           0                        }},
-                                   {"print",     sizeof("print")    - 1, true,  false, {FUNC,            PRINT,          0                        }},
-                                   {"scan",      sizeof("scan")     - 1, true,  false, {FUNC,            SCAN,           0                        }},
+                                   {"main",      sizeof("main")     - 1, true,  false, {FUNC,            MAIN,                                   }},
+                                   {"print",     sizeof("print")    - 1, true,  false, {FUNC,            PRINT,                                  }},
+                                   {"scan",      sizeof("scan")     - 1, true,  false, {FUNC,            SCAN,                                   }},
 
-                                   {"+",         sizeof("+")        - 1, false, false, {OPERATOR,        ADD,            0,    {{BYNARY,   2   }} }},
-                                   {"-",         sizeof("-")        - 1, false, false, {OPERATOR,        SUB,            0,    {{MIXED,    2   }} }},
-                                   {"*",         sizeof("-")        - 1, false, false, {OPERATOR,        MUL,            0,    {{BYNARY,   1   }} }},
-                                   {"/",         sizeof("/")        - 1, false, false, {OPERATOR,        DIV,            0,    {{BYNARY,   1   }} }},
-                                   {"==",        sizeof("==")       - 1, false, false, {OPERATOR,        EQUALLY,        0,    {{BYNARY,   3   }} }},
-                                   {">=",        sizeof(">=")       - 1, false, false, {OPERATOR,        MORE_EQUALLY,   0,    {{BYNARY,   3   }} }},
-                                   {"<=",        sizeof("<=")       - 1, false, false, {OPERATOR,        LESS_EQUALLY,   0,    {{BYNARY,   3   }} }},
-                                   {">",         sizeof(">")        - 1, false, false, {OPERATOR,        MORE,           0,    {{BYNARY,   3   }} }},
-                                   {"<",         sizeof("<")        - 1, false, false, {OPERATOR,        LESS,           0,    {{BYNARY,   3   }} }},
-                                   {"&&",        sizeof("&&")       - 1, false, false, {OPERATOR,        LOGICAL_AND,    0,    {{BYNARY,   4   }} }},
-                                   {"||",        sizeof("||")       - 1, false, false, {OPERATOR,        LOGICAL_OR,     0,    {{BYNARY,   5   }} }},
-                                   {"!",         sizeof("!")        - 1, false, false, {OPERATOR,        LOGICAL_NO,     0,    {{UNARY,    0   }} }},
-                                   {"=",         sizeof("=")        - 1, false, false, {OPERATOR,        ASSIGN,         0,    {{BYNARY,   6   }} }},
+                                   {"+",         sizeof("+")        - 1, false, false, {OPERATOR,        ADD,                 {{BYNARY,   2   }} }},
+                                   {"-",         sizeof("-")        - 1, false, false, {OPERATOR,        SUB,                 {{MIXED,    2   }} }},
+                                   {"*",         sizeof("-")        - 1, false, false, {OPERATOR,        MUL,                 {{BYNARY,   1   }} }},
+                                   {"/",         sizeof("/")        - 1, false, false, {OPERATOR,        DIV,                 {{BYNARY,   1   }} }},
+                                   {"==",        sizeof("==")       - 1, false, false, {OPERATOR,        EQUALLY,             {{BYNARY,   3   }} }},
+                                   {">=",        sizeof(">=")       - 1, false, false, {OPERATOR,        MORE_EQUALLY,        {{BYNARY,   3   }} }},
+                                   {"<=",        sizeof("<=")       - 1, false, false, {OPERATOR,        LESS_EQUALLY,        {{BYNARY,   3   }} }},
+                                   {">",         sizeof(">")        - 1, false, false, {OPERATOR,        MORE,                {{BYNARY,   3   }} }},
+                                   {"<",         sizeof("<")        - 1, false, false, {OPERATOR,        LESS,                {{BYNARY,   3   }} }},
+                                   {"&&",        sizeof("&&")       - 1, false, false, {OPERATOR,        LOGICAL_AND,         {{BYNARY,   4   }} }},
+                                   {"||",        sizeof("||")       - 1, false, false, {OPERATOR,        LOGICAL_OR,          {{BYNARY,   5   }} }},
+                                   {"!",         sizeof("!")        - 1, false, false, {OPERATOR,        LOGICAL_NO,          {{UNARY,    0   }} }},
+                                   {"=",         sizeof("=")        - 1, false, false, {OPERATOR,        ASSIGN,              {{BYNARY,   6   }} }},
 
-                                   {";",         sizeof(";")        - 1, false, false, {SEPARATOR,       SEP_LINE,       0                        }},
-                                   {",",         sizeof(",")        - 1, false, false, {SEPARATOR,       SEP_PARAM_FUNC, 0                        }},
-                                   {"{",         sizeof("{")        - 1, false, false, {SEPARATOR,       SEP_ZONE,       0                        }},
-                                   {"}",         sizeof("}")        - 1, false, false, {SEPARATOR,       BACK_SEP_ZONE,  0                        }},
-                                   {"(",         sizeof("(")        - 1, false, false, {SEPARATOR,       SEP_EXP,        0                        }},
-                                   {")",         sizeof(")")        - 1, false, false, {SEPARATOR,       BACK_SEP_EXP,   0                        }},
+                                   {";",         sizeof(";")        - 1, false, false, {SEPARATOR,       SEP_LINE,                               }},
+                                   {",",         sizeof(",")        - 1, false, false, {SEPARATOR,       SEP_PARAM_FUNC,                         }},
+                                   {"{",         sizeof("{")        - 1, false, false, {SEPARATOR,       SEP_ZONE,                               }},
+                                   {"}",         sizeof("}")        - 1, false, false, {SEPARATOR,       BACK_SEP_ZONE,                          }},
+                                   {"(",         sizeof("(")        - 1, false, false, {SEPARATOR,       SEP_EXP,                                }},
+                                   {")",         sizeof(")")        - 1, false, false, {SEPARATOR,       BACK_SEP_EXP,                           }},
 
-                                   {"func",      sizeof("func")     - 1, true,  true, {FUNC_DECLARATOR, DECL_FUNC,      0                         }}
+                                   {"func",      sizeof("func")     - 1, true,  true, {FUNC_DECLARATOR, DECL_FUNC,                               }}
 };
 
 const size_t NUMBER_KEY_WORDS = sizeof(info_words) / sizeof(info_words[0]);

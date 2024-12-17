@@ -5,7 +5,10 @@
 
 const int MAX_BYNARY_PRIORITET = 6;
 
+static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node);
 static ErrorFrontEnd declaration_var_parsing(StackForParsing *stack, Node** node, TypeKeyWords type);
+
+static ErrorFrontEnd expression_parsing(StackForParsing *stack, Node** node, int prioritet_operator);
 
 static ErrorFrontEnd unary_parsing(StackForParsing *stack, Node** node);
 static ErrorFrontEnd const_parsing(StackForParsing *stack, Node** node);
@@ -27,7 +30,7 @@ ErrorFrontEnd main_parsing(StackForParsing *stack, BynarTree* tree)
     if (tree == NULL)
         return FRONT_ERROR_NULL_PTR;
 
-    ErrorFrontEnd error = declaration_var_parsing(stack, &tree->root, DECLARATOR);
+    ErrorFrontEnd error = command_parsing(stack, &tree->root);
     if (error != FRONT_ERROR_NO)
         return error;
 
@@ -54,7 +57,7 @@ static ErrorFrontEnd declaration_var_parsing(StackForParsing *stack, Node** node
     return FRONT_ERROR_NO;
 }
 
-ErrorFrontEnd expression_parsing(StackForParsing *stack, Node** node, int prioritet_operator)
+static ErrorFrontEnd expression_parsing(StackForParsing *stack, Node** node, int prioritet_operator)
 {
     if (prioritet_operator == 0)
         return unary_parsing(stack, node);
@@ -253,7 +256,7 @@ static ErrorFrontEnd cd_operator_parsing(StackForParsing *stack, Node** node)
     return body_func_parsing(stack, &(*node)->right);
 }
 
-ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node)
+static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node)
 {
     ErrorBynarTree error_tree = NewNode(VOID_NODE, 0, node);
     if (error_tree != BYNAR_ERROR_MO)

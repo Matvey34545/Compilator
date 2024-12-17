@@ -11,7 +11,5 @@ struct StackForParsing
 };
 
 ErrorFrontEnd main_parsing(StackForParsing *stack, BynarTree* tree);
-ErrorFrontEnd expression_parsing(StackForParsing *stack, Node** node, int prioritet_operator);
-ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node);
 
 #endif
