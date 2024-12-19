@@ -200,7 +200,7 @@ static ErrorFrontEnd read_unidettified(stack_t* array_tokens, CompFile* comp_fil
     bool condition = true;
     while (condition)
     {
-        if (isspace(*(comp_file->ptr)) || *(comp_file->ptr) == '\0')
+        if (isspace(*(comp_file->ptr)) || *(comp_file->ptr) == 0)
         {
             condition = false;
             continue;    

@@ -121,8 +121,12 @@ static void print_node(FILE* fp, const Token* token)
             break;
         
         case VARIABLE:
+            my_print_str(fp, token);
+            break;
+        
         case FUNC:
             my_print_str(fp, token);
+            fprintf(fp, "| is_decl_func: %d | is_return: %d | is_decl_const: %d", token->is_declaration_func, token->is_return_func, token->is_declaration_const);
             break;
         
         case OPERATOR:
@@ -131,7 +135,9 @@ static void print_node(FILE* fp, const Token* token)
         case DECLARATOR:
         case FUNC_DECLARATOR:
         case END_FUNC:
-            fprintf(fp, "%s", print_enum(token->number_key_words));
+        case DEFOLT_FUNC:
+        case MAIN_FUNC:
+            fprintf(fp, "is_decl_const: %d | %s", token->is_declaration_const, print_enum(token->number_key_words));
             break;
         
         case VOID_NODE:
@@ -161,7 +167,6 @@ static const char* print_enum(KeyWords key_word)
 
         DESCR_(INT);
         DESCR_(VOID);
-        DESCR_(CONST_VAR);
 
         DESCR_(MAIN);
         DESCR_(PRINT);

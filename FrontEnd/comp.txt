@@ -1,18 +1,28 @@
-func void function(int a, int b, int c);
-
-int x = 0;
-int y = x + 9;
-void y = x + y;
-void z;
-
-func int foo(int a, int x)
+int x;
+main
 {
- if (a == 0)
-{
-	return a;
+  int b;
+  if (5 == 0)
+  {
+    int d;
+  }
 }
 
- x = (8 + 4)*3;
- int z = 0;
- return z;
-} 
+scan(x);
+
+
+func void foo(int y)
+{
+    int z = 0;
+    if (z == 0)
+    {
+      y = 5;
+    }
+    return ;
+  
+  else
+  {
+    y;
+  }
+}
+

@@ -1,147 +1,109 @@
 digraph list{
 rankdir = HR
-node000002380a1b1590 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b15d0 [shape=Mrecord, style="filled",  label = "DECL_FUNC"]
-node000002380a1b1610 [shape=Mrecord, style="filled",  label = "VOID"]
-node000002380a1b1650 [shape=Mrecord, style="filled",  label = "function"]
-node000002380a1b1690 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b16d0 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b1710 [shape=Mrecord, style="filled",  label = "a"]
-node000002380a1b1750 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b1790 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b17d0 [shape=Mrecord, style="filled",  label = "b"]
-node000002380a1b1810 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b1850 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b1890 [shape=Mrecord, style="filled",  label = "c"]
-node000002380a1b18d0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b1910 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b1990 [shape=Mrecord, style="filled",  label = "ASSIGN"]
-node000002380a1b1950 [shape=Mrecord, style="filled",  label = "x"]
-node000002380a1b6980 [shape=Mrecord, style="filled",  label = "0"]
-node000002380a1b6ac0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b6a40 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b6b00 [shape=Mrecord, style="filled",  label = "ASSIGN"]
-node000002380a1b6940 [shape=Mrecord, style="filled",  label = "y"]
-node000002380a1b69c0 [shape=Mrecord, style="filled",  label = "ADD"]
-node000002380a1b6e40 [shape=Mrecord, style="filled",  label = "x"]
-node000002380a1b6c80 [shape=Mrecord, style="filled",  label = "9"]
-node000002380a1b6a00 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b6fc0 [shape=Mrecord, style="filled",  label = "VOID"]
-node000002380a1b6a80 [shape=Mrecord, style="filled",  label = "ASSIGN"]
-node000002380a1b6e80 [shape=Mrecord, style="filled",  label = "y"]
-node000002380a1b6cc0 [shape=Mrecord, style="filled",  label = "ADD"]
-node000002380a1b6c00 [shape=Mrecord, style="filled",  label = "x"]
-node000002380a1b6dc0 [shape=Mrecord, style="filled",  label = "y"]
-node000002380a1b6ec0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b6f00 [shape=Mrecord, style="filled",  label = "VOID"]
-node000002380a1b6b40 [shape=Mrecord, style="filled",  label = "z"]
-node000002380a1b6b80 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b6f40 [shape=Mrecord, style="filled",  label = "DECL_FUNC"]
-node000002380a1b6d00 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b6bc0 [shape=Mrecord, style="filled",  label = "foo"]
-node000002380a1b6f80 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b6c40 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b6880 [shape=Mrecord, style="filled",  label = "a"]
-node000002380a1b6d80 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b6d40 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b6e00 [shape=Mrecord, style="filled",  label = "x"]
-node000002380a1b68c0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b6900 [shape=Mrecord, style="filled",  label = "IF"]
-node000002380a1b83d0 [shape=Mrecord, style="filled",  label = "EQUALLY"]
-node000002380a1b7f10 [shape=Mrecord, style="filled",  label = "a"]
-node000002380a1b80d0 [shape=Mrecord, style="filled",  label = "0"]
-node000002380a1b7cd0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b7e10 [shape=Mrecord, style="filled",  label = "RETURN"]
-node000002380a1b7e50 [shape=Mrecord, style="filled",  label = "a"]
-node000002380a1b7790 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b7b90 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b7a10 [shape=Mrecord, style="filled",  label = "ASSIGN"]
-node000002380a1b7590 [shape=Mrecord, style="filled",  label = "x"]
-node000002380a1b8310 [shape=Mrecord, style="filled",  label = "MUL"]
-node000002380a1b7850 [shape=Mrecord, style="filled",  label = "ADD"]
-node000002380a1b7d10 [shape=Mrecord, style="filled",  label = "8"]
-node000002380a1b75d0 [shape=Mrecord, style="filled",  label = "4"]
-node000002380a1b7c90 [shape=Mrecord, style="filled",  label = "3"]
-node000002380a1b7a50 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b7950 [shape=Mrecord, style="filled",  label = "INT"]
-node000002380a1b7990 [shape=Mrecord, style="filled",  label = "ASSIGN"]
-node000002380a1b8010 [shape=Mrecord, style="filled",  label = "z"]
-node000002380a1b7690 [shape=Mrecord, style="filled",  label = "0"]
-node000002380a1b7550 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b77d0 [shape=Mrecord, style="filled",  label = "RETURN"]
-node000002380a1b7d90 [shape=Mrecord, style="filled",  label = "z"]
-node000002380a1b7a90 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
-node000002380a1b7b50 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa15a0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa15e0 [shape=Mrecord, style="filled",  label = "is_decl_const: 1 | INT"]
+node0000024466fa1620 [shape=Mrecord, style="filled",  label = "x"]
+node0000024466fa1660 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa16a0 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | MAIN"]
+node0000024466fa16e0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa1720 [shape=Mrecord, style="filled",  label = "is_decl_const: 1 | INT"]
+node0000024466fa1760 [shape=Mrecord, style="filled",  label = "b"]
+node0000024466fa17a0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa17e0 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | IF"]
+node0000024466fa1860 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | EQUALLY"]
+node0000024466fa1820 [shape=Mrecord, style="filled",  label = "5"]
+node0000024466fa18a0 [shape=Mrecord, style="filled",  label = "0"]
+node0000024466fa18e0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa1920 [shape=Mrecord, style="filled",  label = "is_decl_const: 1 | INT"]
+node0000024466fa1960 [shape=Mrecord, style="filled",  label = "d"]
+node0000024466fa19a0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6dc0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6c80 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6e00 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | SCAN"]
+node0000024466fa6c00 [shape=Mrecord, style="filled",  label = "x"]
+node0000024466fa6d00 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6e40 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | DECL_FUNC"]
+node0000024466fa6bc0 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | VOID"]
+node0000024466fa6a00 [shape=Mrecord, style="filled",  label = "foo| is_decl_func: 0 | is_return: 0 | is_decl_const: 0"]
+node0000024466fa6a40 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6d40 [shape=Mrecord, style="filled",  label = "is_decl_const: 1 | INT"]
+node0000024466fa6980 [shape=Mrecord, style="filled",  label = "y"]
+node0000024466fa6f00 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6c40 [shape=Mrecord, style="filled",  label = "is_decl_const: 1 | INT"]
+node0000024466fa6b80 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | ASSIGN"]
+node0000024466fa6d80 [shape=Mrecord, style="filled",  label = "z"]
+node0000024466fa6a80 [shape=Mrecord, style="filled",  label = "0"]
+node0000024466fa6cc0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6fc0 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | IF"]
+node0000024466fa6e80 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | EQUALLY"]
+node0000024466fa6ac0 [shape=Mrecord, style="filled",  label = "z"]
+node0000024466fa6880 [shape=Mrecord, style="filled",  label = "0"]
+node0000024466fa6ec0 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6b00 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | ASSIGN"]
+node0000024466fa68c0 [shape=Mrecord, style="filled",  label = "y"]
+node0000024466fa6f40 [shape=Mrecord, style="filled",  label = "5"]
+node0000024466fa6940 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa6b40 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa69c0 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | RETURN"]
+node0000024466fa6f80 [shape=Mrecord, style="filled",  label = "z"]
+node0000024466fa6900 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa8150 [shape=Mrecord, style="filled",  label = "is_decl_const: 0 | ELSE"]
+node0000024466fa8190 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa7d10 [shape=Mrecord, style="filled",  label = "y"]
+node0000024466fa7c50 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa7f10 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
+node0000024466fa8010 [shape=Mrecord, style="filled",  label = "VOID_NODE"]
 edge[color=black]
-node000002380a1b1590->node000002380a1b15d0
-node000002380a1b15d0->node000002380a1b1610
-node000002380a1b1610->node000002380a1b1650
-node000002380a1b1650->node000002380a1b1690
-node000002380a1b1690->node000002380a1b16d0
-node000002380a1b16d0->node000002380a1b1710
-node000002380a1b1690->node000002380a1b1750
-node000002380a1b1750->node000002380a1b1790
-node000002380a1b1790->node000002380a1b17d0
-node000002380a1b1750->node000002380a1b1810
-node000002380a1b1810->node000002380a1b1850
-node000002380a1b1850->node000002380a1b1890
-node000002380a1b1590->node000002380a1b18d0
-node000002380a1b18d0->node000002380a1b1910
-node000002380a1b1910->node000002380a1b1990
-node000002380a1b1990->node000002380a1b1950
-node000002380a1b1990->node000002380a1b6980
-node000002380a1b18d0->node000002380a1b6ac0
-node000002380a1b6ac0->node000002380a1b6a40
-node000002380a1b6a40->node000002380a1b6b00
-node000002380a1b6b00->node000002380a1b6940
-node000002380a1b6b00->node000002380a1b69c0
-node000002380a1b69c0->node000002380a1b6e40
-node000002380a1b69c0->node000002380a1b6c80
-node000002380a1b6ac0->node000002380a1b6a00
-node000002380a1b6a00->node000002380a1b6fc0
-node000002380a1b6fc0->node000002380a1b6a80
-node000002380a1b6a80->node000002380a1b6e80
-node000002380a1b6a80->node000002380a1b6cc0
-node000002380a1b6cc0->node000002380a1b6c00
-node000002380a1b6cc0->node000002380a1b6dc0
-node000002380a1b6a00->node000002380a1b6ec0
-node000002380a1b6ec0->node000002380a1b6f00
-node000002380a1b6f00->node000002380a1b6b40
-node000002380a1b6ec0->node000002380a1b6b80
-node000002380a1b6b80->node000002380a1b6f40
-node000002380a1b6f40->node000002380a1b6d00
-node000002380a1b6d00->node000002380a1b6bc0
-node000002380a1b6bc0->node000002380a1b6f80
-node000002380a1b6f80->node000002380a1b6c40
-node000002380a1b6c40->node000002380a1b6880
-node000002380a1b6f80->node000002380a1b6d80
-node000002380a1b6d80->node000002380a1b6d40
-node000002380a1b6d40->node000002380a1b6e00
-node000002380a1b6bc0->node000002380a1b68c0
-node000002380a1b68c0->node000002380a1b6900
-node000002380a1b6900->node000002380a1b83d0
-node000002380a1b83d0->node000002380a1b7f10
-node000002380a1b83d0->node000002380a1b80d0
-node000002380a1b6900->node000002380a1b7cd0
-node000002380a1b7cd0->node000002380a1b7e10
-node000002380a1b7e10->node000002380a1b7e50
-node000002380a1b7cd0->node000002380a1b7790
-node000002380a1b68c0->node000002380a1b7b90
-node000002380a1b7b90->node000002380a1b7a10
-node000002380a1b7a10->node000002380a1b7590
-node000002380a1b7a10->node000002380a1b8310
-node000002380a1b8310->node000002380a1b7850
-node000002380a1b7850->node000002380a1b7d10
-node000002380a1b7850->node000002380a1b75d0
-node000002380a1b8310->node000002380a1b7c90
-node000002380a1b7b90->node000002380a1b7a50
-node000002380a1b7a50->node000002380a1b7950
-node000002380a1b7950->node000002380a1b7990
-node000002380a1b7990->node000002380a1b8010
-node000002380a1b7990->node000002380a1b7690
-node000002380a1b7a50->node000002380a1b7550
-node000002380a1b7550->node000002380a1b77d0
-node000002380a1b77d0->node000002380a1b7d90
-node000002380a1b7550->node000002380a1b7a90
-node000002380a1b6b80->node000002380a1b7b50
+node0000024466fa15a0->node0000024466fa15e0
+node0000024466fa15e0->node0000024466fa1620
+node0000024466fa15a0->node0000024466fa1660
+node0000024466fa1660->node0000024466fa16a0
+node0000024466fa16a0->node0000024466fa16e0
+node0000024466fa16e0->node0000024466fa1720
+node0000024466fa1720->node0000024466fa1760
+node0000024466fa16e0->node0000024466fa17a0
+node0000024466fa17a0->node0000024466fa17e0
+node0000024466fa17e0->node0000024466fa1860
+node0000024466fa1860->node0000024466fa1820
+node0000024466fa1860->node0000024466fa18a0
+node0000024466fa17e0->node0000024466fa18e0
+node0000024466fa18e0->node0000024466fa1920
+node0000024466fa1920->node0000024466fa1960
+node0000024466fa18e0->node0000024466fa19a0
+node0000024466fa17a0->node0000024466fa6dc0
+node0000024466fa1660->node0000024466fa6c80
+node0000024466fa6c80->node0000024466fa6e00
+node0000024466fa6e00->node0000024466fa6c00
+node0000024466fa6c80->node0000024466fa6d00
+node0000024466fa6d00->node0000024466fa6e40
+node0000024466fa6e40->node0000024466fa6bc0
+node0000024466fa6bc0->node0000024466fa6a00
+node0000024466fa6a00->node0000024466fa6a40
+node0000024466fa6a40->node0000024466fa6d40
+node0000024466fa6d40->node0000024466fa6980
+node0000024466fa6a00->node0000024466fa6f00
+node0000024466fa6f00->node0000024466fa6c40
+node0000024466fa6c40->node0000024466fa6b80
+node0000024466fa6b80->node0000024466fa6d80
+node0000024466fa6b80->node0000024466fa6a80
+node0000024466fa6f00->node0000024466fa6cc0
+node0000024466fa6cc0->node0000024466fa6fc0
+node0000024466fa6fc0->node0000024466fa6e80
+node0000024466fa6e80->node0000024466fa6ac0
+node0000024466fa6e80->node0000024466fa6880
+node0000024466fa6fc0->node0000024466fa6ec0
+node0000024466fa6ec0->node0000024466fa6b00
+node0000024466fa6b00->node0000024466fa68c0
+node0000024466fa6b00->node0000024466fa6f40
+node0000024466fa6ec0->node0000024466fa6940
+node0000024466fa6cc0->node0000024466fa6b40
+node0000024466fa6b40->node0000024466fa69c0
+node0000024466fa69c0->node0000024466fa6f80
+node0000024466fa6b40->node0000024466fa6900
+node0000024466fa6900->node0000024466fa8150
+node0000024466fa8150->node0000024466fa8190
+node0000024466fa8190->node0000024466fa7d10
+node0000024466fa8190->node0000024466fa7c50
+node0000024466fa6900->node0000024466fa7f10
+node0000024466fa6d00->node0000024466fa8010
 }

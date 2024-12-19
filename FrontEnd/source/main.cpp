@@ -3,7 +3,11 @@
 #include "split_token.h"
 #include "stack.h"
 #include "create_bynar_tree.h"
+#include "semantical_analys.h"
 #include "dump.h"
+
+void dump_var(const stack_t* stack);
+void print_ptr(const stack_t* stack);
 
 int main()
 {
@@ -13,14 +17,18 @@ int main()
     if (error != FRONT_ERROR_NO)
         return error;
 
-    // for (int i = 0; i < stack.size / sizeof(Token); i++)
-    //     printf("Type: %d\nNumber: %d\n\n", ((Token*)stack.ptr + i)->type_key_word, ((Token*)stack.ptr + i)->number_key_words);
-
     StackForParsing main_stack = {stack, 0};
     BynarTree tree             = {};
     create_bynar_tree(&tree, sizeof(Token));
 
-    printf("ERROR: %d\n", main_parsing(&main_stack, &tree));
+    error = main_parsing(&main_stack, &tree);
+    if (error != FRONT_ERROR_NO)
+    {
+        printf("ERROR: %d\n", error);
+        return error;
+    }
 
-    dump(&tree, NULL, NULL);
+    stack_t stack_var = {};
+    stack_t stack_func = {};
+    printf("ERROR: %d", semantycal_analys(&tree, &stack_var, &stack_func));
 }

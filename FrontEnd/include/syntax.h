@@ -12,32 +12,31 @@ enum KeyWords
 
     INT            = 4,
     VOID           = 5,
-    CONST_VAR      = 6,
 
-    MAIN           = 7,
-    PRINT          = 8,
-    SCAN           = 9,
+    MAIN           = 6,
+    PRINT          = 7,
+    SCAN           = 8,
 
-    ADD            = 10,
-    SUB            = 11,
-    MUL            = 12,
-    DIV            = 13,
-    EQUALLY        = 14,
-    MORE_EQUALLY   = 15,
-    LESS_EQUALLY   = 16,
-    MORE           = 17,
-    LESS           = 18,
-    LOGICAL_AND    = 19,
-    LOGICAL_OR     = 20,
-    LOGICAL_NO     = 21,
-    ASSIGN         = 22,
+    ADD            = 9,
+    SUB            = 10,
+    MUL            = 11,
+    DIV            = 12,
+    EQUALLY        = 13,
+    MORE_EQUALLY   = 14,
+    LESS_EQUALLY   = 15,
+    MORE           = 16,
+    LESS           = 17,
+    LOGICAL_AND    = 18,
+    LOGICAL_OR     = 19,
+    LOGICAL_NO     = 20,
+    ASSIGN         = 21,
 
-    SEP_LINE       = 23,
-    SEP_PARAM_FUNC = 24,
-    SEP_ZONE       = 25,
-    BACK_SEP_ZONE  = 26,
-    SEP_EXP        = 27,
-    BACK_SEP_EXP   = 28,
+    SEP_LINE       = 22,
+    SEP_PARAM_FUNC = 23,
+    SEP_ZONE       = 24,
+    BACK_SEP_ZONE  = 25,
+    SEP_EXP        = 26,
+    BACK_SEP_EXP   = 27,
 
     DECL_FUNC      = 29
 };
@@ -55,7 +54,9 @@ enum TypeKeyWords
     END_CODE        = 9,
     VOID_NODE       = 10,
     END_FUNC        = 11,
-    FUNC_DECLARATOR = 12
+    FUNC_DECLARATOR = 12,
+    DEFOLT_FUNC     = 13,
+    MAIN_FUNC       = 14
 };
 
 struct Variable 
@@ -86,8 +87,10 @@ struct Token
         Operator_t operator_t;
         int cnst;
         Variable var;
-        bool is_declaration_func;
     };
+    bool is_declaration_func;
+    bool is_return_func;
+    bool is_declaration_const;
 };
 
 struct InfoToken
@@ -108,11 +111,10 @@ const InfoToken info_words[] =    {{"if",        sizeof("if")       - 1, true,  
 
                                    {"int",       sizeof("int")      - 1, true,  true,  {DECLARATOR,      INT,                                    }},
                                    {"void",      sizeof("void")     - 1, true,  true,  {DECLARATOR,      VOID,                                   }},
-                                   {"const",     sizeof("const")    - 1, true,  true,  {DECLARATOR,      CONST_VAR,                              }},
 
-                                   {"main",      sizeof("main")     - 1, true,  false, {FUNC,            MAIN,                                   }},
-                                   {"print",     sizeof("print")    - 1, true,  false, {FUNC,            PRINT,                                  }},
-                                   {"scan",      sizeof("scan")     - 1, true,  false, {FUNC,            SCAN,                                   }},
+                                   {"main",      sizeof("main")     - 1, true,  false, {MAIN_FUNC,       MAIN,                                   }},
+                                   {"print",     sizeof("print")    - 1, true,  false, {DEFOLT_FUNC,     PRINT,                                  }},
+                                   {"scan",      sizeof("scan")     - 1, true,  false, {DEFOLT_FUNC,     SCAN,                                   }},
 
                                    {"+",         sizeof("+")        - 1, false, false, {OPERATOR,        ADD,                 {{BYNARY,   2   }} }},
                                    {"-",         sizeof("-")        - 1, false, false, {OPERATOR,        SUB,                 {{MIXED,    2   }} }},

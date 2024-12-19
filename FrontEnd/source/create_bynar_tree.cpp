@@ -6,10 +6,11 @@
 const int MAX_BYNARY_PRIORITET = 6;
 
 static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node);
-static ErrorFrontEnd declaration_var_parsing(StackForParsing *stack, Node** node, TypeKeyWords type);
+static ErrorFrontEnd declaration_var_parsing(StackForParsing *stack, Node** node);
+static ErrorFrontEnd end_func_parsing(StackForParsing *stack, Node** node);
 
 static ErrorFrontEnd expression_parsing(StackForParsing *stack, Node** node, int prioritet_operator);
-static ErrorFrontEnd expression_command_parsing(StackForParsing *stack, Node** node, int prioritet);
+static ErrorFrontEnd expression_command_parsing(StackForParsing *stack, Node** node);
 
 static ErrorFrontEnd unary_parsing(StackForParsing *stack, Node** node);
 static ErrorFrontEnd const_parsing(StackForParsing *stack, Node** node);
@@ -21,6 +22,10 @@ static ErrorFrontEnd declaration_func_parsing(StackForParsing *stack, Node** nod
 static ErrorFrontEnd declaration_func_param_parsing(StackForParsing *stack, Node** node);
 static ErrorFrontEnd body_func_parsing(StackForParsing *stack, Node** node);
 static ErrorFrontEnd cd_operator_parsing(StackForParsing *stack, Node** node);
+
+static ErrorFrontEnd defolt_func_parsing(StackForParsing *stack, Node** node);
+
+static ErrorFrontEnd main_func_parsing(StackForParsing *stack, Node** node);
 
 static ErrorFrontEnd check_type_and_create_node(StackForParsing *stack, Node** node, TypeKeyWords type);
 static ErrorFrontEnd create_new_top(StackForParsing *stack, Node** node);
@@ -41,9 +46,14 @@ ErrorFrontEnd main_parsing(StackForParsing *stack, BynarTree* tree)
     return FRONT_ERROR_NO;
 }
 
-static ErrorFrontEnd declaration_var_parsing(StackForParsing *stack, Node** node, TypeKeyWords type)
+static ErrorFrontEnd declaration_var_parsing(StackForParsing *stack, Node** node)
 {
-    ErrorFrontEnd error = check_type_and_create_node(stack, node, type);
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words == VOID)
+        return FRONT_INVALID_DECLARATOR;
+
+    ((Token*)(stack->stack).ptr + stack->counter)->is_declaration_const = true;
+
+    ErrorFrontEnd error = check_type_and_create_node(stack, node, DECLARATOR);
     if (error != FRONT_ERROR_NO)
         return error;
 
@@ -124,6 +134,11 @@ static ErrorFrontEnd func_parsing(StackForParsing *stack, Node** node)
 
 static ErrorFrontEnd func_parametr_parsing(StackForParsing *stack, Node** node)
 {
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words == BACK_SEP_EXP)
+    {
+        (stack->counter)++;
+        return FRONT_ERROR_NO;
+    }
     ErrorBynarTree error_tree = NewNode(VOID_NODE, 0, node);
     if (error_tree != BYNAR_ERROR_MO)
         return FRONT_ERROR_TREE;
@@ -190,20 +205,36 @@ static ErrorFrontEnd declaration_func_parsing(StackForParsing *stack, Node** nod
         return error;
 
     if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words == SEP_ZONE)
+    {
+        
+        ((Token*)(*node)->left->left->elem)->is_declaration_func = false;
         return body_func_parsing(stack, &(*node)->left->left->right);
+    }
 
     if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != SEP_LINE)
         return FRONT_ERROR_SYNTAX;
 
+    ((Token*)(*node)->left->left->elem)->is_declaration_func = true;
     (stack->counter)++;
     return FRONT_ERROR_NO;
 }
 
 static ErrorFrontEnd declaration_func_param_parsing(StackForParsing *stack, Node** node)
 {
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words == BACK_SEP_EXP)
+    {
+        (stack->counter)++;
+        return FRONT_ERROR_NO;    
+    }
+
     ErrorBynarTree error_tree = NewNode(VOID_NODE, 0, node);
     if (error_tree != BYNAR_ERROR_MO)
         return FRONT_ERROR_TREE;
+
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words == VOID)
+        return FRONT_INVALID_DECLARATOR;
+
+    ((Token*)(stack->stack).ptr + stack->counter)->is_declaration_const = true;
 
     ErrorFrontEnd error = check_type_and_create_node(stack, &(*node)->left, DECLARATOR);
     if (error != FRONT_ERROR_NO)
@@ -246,13 +277,25 @@ static ErrorFrontEnd body_func_parsing(StackForParsing *stack, Node** node)
 
 static ErrorFrontEnd cd_operator_parsing(StackForParsing *stack, Node** node)
 {
+    bool is_else = ((Token*)(stack->stack).ptr + stack->counter)->number_key_words == ELSE;
     ErrorFrontEnd error = check_type_and_create_node(stack, node, CD_OPERATOR);
     if (error != FRONT_ERROR_NO)
         return error;
 
-    error = expression_parsing(stack, &(*node)->left, MAX_BYNARY_PRIORITET);
+    if (is_else)
+        return body_func_parsing(stack, &(*node)->right);
+
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != SEP_EXP)
+        return FRONT_ERROR_SYNTAX;
+    (stack->counter)++;
+    
+    error = expression_parsing(stack, &(*node)->left, MAX_BYNARY_PRIORITET - 1);
     if (error != FRONT_ERROR_NO)
         return error;
+
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != BACK_SEP_EXP)
+        return FRONT_EXPECTED_BACK_SEP_EXP;
+    (stack->counter)++;
 
     return body_func_parsing(stack, &(*node)->right);
 }
@@ -264,13 +307,18 @@ static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node)
         return FRONT_ERROR_TREE;
 
     ErrorFrontEnd error = FRONT_ERROR_NO;
-    bool is_read = false;
 
     switch (((Token*)(stack->stack).ptr + stack->counter)->type_key_word)
     {
         case DECLARATOR:
+            error = declaration_var_parsing(stack, &(*node)->left);
+            if (error != FRONT_ERROR_NO)
+                return error;
+            
+            break;
+
         case END_FUNC:
-            error = declaration_var_parsing(stack, &(*node)->left, ((Token*)(stack->stack).ptr + stack->counter)->type_key_word);
+            error = end_func_parsing(stack, &(*node)->left);
             if (error != FRONT_ERROR_NO)
                 return error;
             
@@ -280,23 +328,38 @@ static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node)
             error = declaration_func_parsing(stack, &(*node)->left);
             if (error != FRONT_ERROR_NO)
                 return error;
-            is_read = true;
+            
             break;
         
         case CD_OPERATOR:
             error = cd_operator_parsing(stack, &(*node)->left);
             if (error != FRONT_ERROR_NO)
                 return error;
-            is_read = true;
+            
             break;
         
         case OPERATOR:
         case VARIABLE:
         case CONST:
-            error = expression_command_parsing(stack, &(*node)->left, MAX_BYNARY_PRIORITET);
+        case FUNC:
+            error = expression_command_parsing(stack, &(*node)->left);
             if (error != FRONT_ERROR_NO)
                 return error;
-            is_read = true;
+            
+            break;
+        
+        case DEFOLT_FUNC:
+            error = defolt_func_parsing(stack, &(*node)->left);
+            if (error != FRONT_ERROR_NO)
+                return error;
+            
+            break;
+
+        case MAIN_FUNC:
+            error = main_func_parsing(stack, &(*node)->left);
+            if (error != FRONT_ERROR_NO)
+                return error;
+            
             break;
 
         default:
@@ -305,9 +368,68 @@ static ErrorFrontEnd command_parsing(StackForParsing *stack, Node** node)
     return command_parsing(stack, &(*node)->right);
 }
 
-static ErrorFrontEnd expression_command_parsing(StackForParsing *stack, Node** node, int prioritet)
+static ErrorFrontEnd end_func_parsing(StackForParsing *stack, Node** node)
 {
-    ErrorFrontEnd error = expression_parsing(stack, node, prioritet);
+    ErrorFrontEnd error = check_type_and_create_node(stack, node, END_FUNC);
+    if (error != FRONT_ERROR_NO)
+        return error;
+
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words == SEP_LINE)
+    {
+        (stack->counter)++;
+        return FRONT_ERROR_NO;    
+    }
+
+    error = expression_parsing(stack, &(*node)->left, MAX_BYNARY_PRIORITET);
+    if (error != FRONT_ERROR_NO)
+        return error;
+
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != SEP_LINE)
+        return FRONT_ERROR_SYNTAX;
+
+    (stack->counter)++;
+    return FRONT_ERROR_NO;
+}
+
+static ErrorFrontEnd defolt_func_parsing(StackForParsing *stack, Node** node)
+{
+    ErrorFrontEnd error = check_type_and_create_node(stack, node, DEFOLT_FUNC);
+    if (error != FRONT_ERROR_NO)
+        return error;
+
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != SEP_EXP)
+        return FRONT_ERROR_SYNTAX;
+
+    (stack->counter)++;
+
+    error = expression_parsing(stack, &(*node)->left, MAX_BYNARY_PRIORITET);
+    if (error != FRONT_ERROR_NO)
+        return error;
+
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != BACK_SEP_EXP)
+        return FRONT_EXPECTED_BACK_SEP_EXP;
+
+    (stack->counter)++;
+
+    if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != SEP_LINE)
+        return FRONT_EXPECTED_SEP_LINE;
+
+    (stack->counter)++;
+    return FRONT_ERROR_NO;
+}
+
+static ErrorFrontEnd main_func_parsing(StackForParsing *stack, Node** node)
+{
+    ErrorFrontEnd error = check_type_and_create_node(stack, node, MAIN_FUNC);
+    if (error != FRONT_ERROR_NO)
+        return error;
+    
+    return body_func_parsing(stack, &(*node)->right);
+}
+
+static ErrorFrontEnd expression_command_parsing(StackForParsing *stack, Node** node)
+{
+    ErrorFrontEnd error = expression_parsing(stack, node, MAX_BYNARY_PRIORITET);
     if (((Token*)(stack->stack).ptr + stack->counter)->number_key_words != SEP_LINE)
         return FRONT_EXPECTED_SEP_LINE;
 
